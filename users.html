@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+      integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+      crossorigin="anonymous"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+
+    <!-- Main Custom Css -->
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+    <title>Admin Area | Users</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand fs-3" href="index.html">CMS</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-between px-2"
+          id="navbarNav"
+        >
+          <div>
+            <ul class="navbar-nav">
+              <li class="nav-item navbar-text">
+                <a class="nav-link" href="index.html">Dashboards</a>
+              </li>
+              <li class="nav-item navbar-text">
+                <a class="nav-link" href="pages.html">Pages</a>
+              </li>
+              <li class="nav-item navbar-text">
+                <a class="nav-link" href="posts.html">Posts</a>
+              </li>
+              <li class="nav-item navbar-text">
+                <a class="nav-link active" href="users.html">Users</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Welcomes, Austin</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="login.html">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header  -->
+    <header id="header" class="pt-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10">
+            <h1>
+              <i class="fa fa-cog"></i> Users
+              <small>Manage site Pages</small>
+            </h1>
+          </div>
+          <div class="col-md-2">
+            <div class="dropdown create">
+              <button
+                class="btn btn-light dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Create Content
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li>
+                  <a
+                    type="button"
+                    class="dropdown-item"
+                    data-bs-toggle="modal"
+                    data-bs-target="#addPage"
+                    >Add Page</a
+                  >
+                </li>
+                <li>
+                  <a
+                    type="button"
+                    class="dropdown-item"
+                    data-bs-toggle="modal"
+                    data-bs-target="#addPost"
+                    >Add Post</a
+                  >
+                </li>
+                <li>
+                  <a
+                    type="button"
+                    class="dropdown-item"
+                    data-bs-toggle="modal"
+                    data-bs-target="#addUser"
+                    >Add User</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Breadcrumb Section-->
+    <section id="breadcrumb">
+      <div class="container">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Dashboards</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Users</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="main">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="list-group">
+              <a
+                href="index.html"
+                class="list-group-item list-group-item-action main-color-bg"
+              >
+                <i class="fa fa-cog"></i> Dashboard
+              </a>
+              <a
+                href="pages.html"
+                class="list-group-item list-group-item-action d-flex align-items-center justify-content-center"
+              >
+                <i class="fa fa-book me-2"></i>Pages
+                <span class="badge bg-secondary ms-auto">12</span></a
+              >
+              <a
+                href="posts.html"
+                class="list-group-item list-group-item-action d-flex align-items-center justify-content-center"
+                ><i class="fa fa-edit me-2"></i>Posts
+                <span class="badge bg-secondary ms-auto">33</span></a
+              >
+              <a
+                href="users.html"
+                class="list-group-item list-group-item-action d-flex align-items-center justify-content-center"
+                ><i class="fa fa-user me-2"></i>User
+                <span class="badge bg-secondary ms-auto">241</span>
+              </a>
+            </div>
+            <div class="well border mt-3 pb-5 pt-3 px-2">
+              <h5 class="mb-3">Disk Space Used</h5>
+              <div
+                class="mb-3 progress progress-bar-striped progress-bar-animated"
+              >
+                <div
+                  class="progress-bar w-75"
+                  role="progressbar"
+                  aria-valuenow="60"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                >
+                  60%
+                </div>
+              </div>
+              <h5 class="mb-3">Bandwidth Used</h5>
+              <div class="progress progress-bar-striped progress-bar-animated">
+                <div
+                  class="progress-bar w-50"
+                  role="progressbar"
+                  aria-valuenow="40"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                >
+                  40%
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-9">
+            <!-- Website Overview -->
+            <div class="card">
+              <div class="card-header main-color-bg">Users</div>
+              <div class="card-body pb-4">
+                <div class="row">
+                  <div class="col-md-12">
+                    <input
+                      type="text"
+                      name=""
+                      id=""
+                      class="form-control"
+                      placeholder="Filter Users..."
+                    />
+                  </div>
+                </div>
+                <table class="table table-striped table-hover">
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Joined</th>
+                    <th></th>
+                  </tr>
+                  <tr>
+                    <td>Jill Smith</td>
+                    <td>jillsmith@gmail.com</td>
+                    <td>Dec 12, 2016</td>
+                    <td>
+                      <a class="btn btn-primary" href="edit.html"
+                        ><i class="far fa-edit"></i> Edit</a
+                      >
+                      <a class="btn btn-danger" href="#"
+                        ><i class="fas fa-ban"></i> Delete</a
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Bob Prob</td>
+                    <td>bobprob@gmail.com</td>
+                    <td>Dec 13, 2016</td>
+                    <td>
+                      <a class="btn btn-primary" href="edit.html"
+                        ><i class="far fa-edit"></i> Edit</a
+                      >
+                      <a class="btn btn-danger" href="#"
+                        ><i class="fas fa-ban"></i> Delete</a
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Daniel Suck</td>
+                    <td>suckme@gmail.com</td>
+                    <td>Dec 13, 2016</td>
+                    <td>
+                      <a class="btn btn-primary" href="edit.html"
+                        ><i class="far fa-edit"></i> Edit</a
+                      >
+                      <a class="btn btn-danger" href="#"
+                        ><i class="fas fa-ban"></i> Delete</a
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Jackson Ross</td>
+                    <td>jackRossB@gmail.com</td>
+                    <td>Dec 14, 2016</td>
+                    <td>
+                      <a class="btn btn-primary" href="edit.html"
+                        ><i class="far fa-edit"></i> Edit</a
+                      >
+                      <a class="btn btn-danger" href="#"
+                        ><i class="fas fa-ban"></i> Delete</a
+                      >
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal -->
+
+    <!-- Add Page Modal -->
+    <div
+      class="modal fade"
+      id="addPage"
+      tabindex="-1"
+      aria-labelledby="addPageModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form>
+            <div class="modal-header">
+              <h5 class="modal-title" id="addPageModal">Add Page</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group mb-3">
+                <label for="Page" class="form-label">Page Title</label>
+                <input
+                  type="text"
+                  name="pageTitle"
+                  id="pageTitle"
+                  placeholder="Page Title"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group mb-3">
+                <label for="pageBody" class="form-label">Page Body</label>
+                <textarea
+                  name="editor1"
+                  cols="30"
+                  rows="10"
+                  class="form-control"
+                  placeholder="Page Body"
+                ></textarea>
+              </div>
+              <div class="checkbox mb-3">
+                <label class="form-label">
+                  <input type="checkbox" /> Published
+                </label>
+              </div>
+              <div class="form-group mb-3">
+                <label for="metaTag" class="form-label">Meta Tag</label>
+                <input
+                  type="text"
+                  name=""
+                  id=""
+                  placeholder="Add Some Tags..."
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group mb-3">
+                <label class="form-label">Mega Description</label>
+                <input
+                  type="text"
+                  name=""
+                  id=""
+                  placeholder="Add Meta Descriptions..."
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-outline-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="submit" class="btn btn-primary">
+                Save changes
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Post Modal -->
+    <div
+      class="modal fade"
+      id="addPost"
+      tabindex="-1"
+      aria-labelledby="addPostModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form action="#">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addPostModal">Add Post</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group mb-3">
+                <label for="postTitle" class="form-label">Title</label>
+                <input
+                  type="text"
+                  name=""
+                  id=""
+                  placeholder="Add Post Title"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group mb-3">
+                <label for="postContent" class="form-label">Post Content</label>
+                <textarea
+                  name="editor2"
+                  id=""
+                  cols="30"
+                  rows="10"
+                  class="form-control"
+                >
+Add Text...</textarea
+                >
+              </div>
+              <div class="form-group mb-3">
+                <label for="formFileMultiple" class="form-label"
+                  >Add Images</label
+                >
+                <input
+                  class="form-control"
+                  type="file"
+                  id="formFileMultiple"
+                  multiple
+                />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-outline-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="submit" class="btn btn-primary">
+                Save changes
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add User Modal -->
+    <div
+      class="modal fade"
+      id="addUser"
+      tabindex="-1"
+      aria-labelledby="addUserModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form action="#">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addUserModal">Add User</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group mb-3">
+                <label for="" class="form-label">First Name</label>
+                <input
+                  type="text"
+                  name="fName"
+                  id="fName"
+                  placeholder="First Name"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group mb-3">
+                <label for="" class="form-label">Last Name</label>
+                <input
+                  type="text"
+                  name="lName"
+                  id="lName"
+                  placeholder="Last Name"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group mb-3">
+                <label for="" class="form-label">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="email@somthing.com"
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-outline-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary">
+                Save changes
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!--Footer   -->
+    <footer id="footer">
+      <p>Copyright &COPY; themes 20221</p>
+    </footer>
+
+    <script>
+      CKEDITOR.replace("editor1");
+      CKEDITOR.replace("editor2");
+      CKEDITOR.replace("editor3");
+    </script>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
